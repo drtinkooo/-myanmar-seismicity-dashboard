@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myanmar Seismicity Dashboard | Live Analysis</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+</head>
+<body>
+    <div id="loading">
+        <div class="loader"></div>
+        <p>Fetching Live Data from USGS...</p>
+    </div>
+
+    <header class="dashboard-header">
+        <div class="header-left">
+            <h1>🇲🇲 Myanmar Seismicity Dashboard</h1>
+            <p id="last-update">Connecting to USGS Catalog...</p>
+        </div>
+        <div class="header-right">
+             <div class="status-badge">
+                <span class="pulse"></span> Live
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <section class="stats-row">
+            <div class="stat-card">
+                <span class="stat-value" id="total-events">--</span>
+                <span class="stat-label">Events (Past Year)</span>
+            </div>
+            <div class="stat-card highlight">
+                <span class="stat-value" id="max-magnitude">--</span>
+                <span class="stat-label">Max Magnitude</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value" id="strong-events">--</span>
+                <span class="stat-label">M ≥ 5.0</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value" id="avg-depth">--</span>
+                <span class="stat-label">Avg Depth (km)</span>
+            </div>
+        </section>
+
+        <div class="main-grid">
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+            
+            <div class="table-card">
+                <h3>Significant Events (M ≥ 4.5)</h3>
+                <div class="table-scroll">
+                    <table id="major-events-table" class="events-table">
+                        <thead>
+                            <tr><th>Date</th><th>Mag</th><th>Depth</th><th>Location</th></tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-card">
+                <canvas id="timelineChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <canvas id="magDistChart"></canvas>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
