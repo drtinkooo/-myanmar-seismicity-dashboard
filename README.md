@@ -8,7 +8,6 @@ An automated, real-time dashboard for monitoring and analyzing seismic activity 
 
 ![Dashboard Preview](preview.png)
 
-*Add a screenshot of your dashboard here and name it `preview.png`*
 
 ---
 
